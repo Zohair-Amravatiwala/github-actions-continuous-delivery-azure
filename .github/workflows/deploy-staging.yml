@@ -26,7 +26,7 @@ jobs:
           name: webpack artifacts
           path: public/
   
-  Build_Docker_Image:
+  BuildDockerImage:
     runs-on: ubuntu-latest
     needs: build
     name: Build Image and store in GitHub packages
@@ -44,9 +44,9 @@ jobs:
           repo-token: ${{secrets.GITHUB_TOKEN}}
           image-name: ${{env.DOCKER_IMAGE_NAME}}
 
-  Deploy_to_Azure:
+  DeploytoAzure:
     runs-on: ubuntu-latest
-    needs: Build_Docker_iamge
+    needs: BuildDockerImage
     name: Deploy app container to Azure
     steps:
       - name: "Login via Azure CLI"
